@@ -1,0 +1,47 @@
+buildscript {
+    ext {
+        springBootVersion = '1.2.6.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
+        classpath('io.spring.gradle:dependency-management-plugin:0.5.2.RELEASE')
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot' 
+apply plugin: 'io.spring.dependency-management' 
+
+jar {
+    baseName = 'configuration-services'
+    version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web:1.2.6.RELEASE')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.hsqldb:hsqldb:2.3.3')
+    compile('com.google.guava:guava:19.0-rc2')
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.spockframework:spock-core:1.0-groovy-2.4')
+    testCompile('org.spockframework:spock-spring:1.0-groovy-2.4')
+    testCompile('org.codehaus.groovy:groovy-all:2.4.1')
+    testCompile('org.unitils:unitils-core:3.4.2')
+    testRuntime('cglib:cglib-nodep:2.2')
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.7'
+}
