@@ -8,10 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
 
-/**
- * User: Richa
- * Date: 3/21/15
- */
 public abstract class AbstractService<E extends AbstractEntity, R extends CrudRepository<E, String>> implements ServiceInterface<E, String> {
     private static final String ID_ON_POST = "ID cannot be accepted while creating a new entity.";
     private static final String NOT_FOUND = "Entity with ID %s not found.";
